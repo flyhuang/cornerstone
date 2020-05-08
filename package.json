@@ -18,7 +18,7 @@
   },
   "scripts": {
     "apidocs:generate": "npm run clean:docs && documentation build src/index.js -f md -c documentation.yml -o docs/api.md",
-    "build": "npm run test && npm run version && npm run webpack",
+    "build": "npm run version && npm run webpack",
     "clean": "npm run clean:dist && npm run clean:coverage",
     "clean:dist": "shx rm -rf dist",
     "clean:docs": "shx rm -f docs/api.md",
@@ -29,7 +29,7 @@
     "eslint-quiet": "eslint -c .eslintrc.js --quiet src",
     "eslint-fix": "eslint -c .eslintrc.js --fix src",
     "eslint-fix-test": "eslint -c .eslintrc.js --fix test",
-    "prepublishOnly": "yarn run build",
+    "prepublishOnly": "npm run build",
     "start": "npm run webpack",
     "start:dev": "webpack-dev-server --config ./config/webpack/webpack-dev",
     "test": "npm run test:chrome",
@@ -83,5 +83,8 @@
     "dist/cornerstone.js.map",
     "dist/cornerstone.min.js",
     "dist/cornerstone.min.js.map"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
