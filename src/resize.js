@@ -34,16 +34,22 @@ function setCanvasSize (element, canvas) {
     }
     */
 
+  let devicePixelRatio = window.devicePixelRatio;
+  if(devicePixelRatio === undefined) {
+    devicePixelRatio = 1.0;
+  }
   // Avoid setting the same value because it flashes the canvas with IE and Edge
-  if (canvas.width !== element.clientWidth) {
-    canvas.width = element.clientWidth;
+  if (canvas.width !== element.clientWidth * devicePixelRatio) {
+    canvas.width = element.clientWidth * devicePixelRatio;
     canvas.style.width = `${element.clientWidth}px`;
   }
   // Avoid setting the same value because it flashes the canvas with IE and Edge
-  if (canvas.height !== element.clientHeight) {
-    canvas.height = element.clientHeight;
+  if (canvas.height !== element.clientHeight * devicePixelRatio) {
+    canvas.height = element.clientHeight * devicePixelRatio;
     canvas.style.height = `${element.clientHeight}px`;
   }
+
+  canvas.getContext('2d').scale(devicePixelRatio, devicePixelRatio);
 }
 
 /**

@@ -20,8 +20,8 @@ export default function (element, pageX, pageY) {
 
   // Convert the pageX and pageY to the canvas client coordinates
   const rect = element.getBoundingClientRect();
-  const clientX = pageX - rect.left - window.pageXOffset;
-  const clientY = pageY - rect.top - window.pageYOffset;
+  const clientX = pageX - rect.left - window.pageXOffset * (window.devicePixelRatio || 1);
+  const clientY = pageY - rect.top - window.pageYOffset * (window.devicePixelRatio || 1);
 
   const pt = { x: clientX,
     y: clientY };
